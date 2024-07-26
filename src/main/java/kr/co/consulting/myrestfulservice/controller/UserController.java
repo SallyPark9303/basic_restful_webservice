@@ -1,6 +1,7 @@
 package kr.co.consulting.myrestfulservice.controller;
 
 
+import jakarta.validation.Valid;
 import kr.co.consulting.myrestfulservice.Dao.UserDaoService;
 import kr.co.consulting.myrestfulservice.bean.User;
 import kr.co.consulting.myrestfulservice.exception.UsernotFoundException;
@@ -39,8 +40,9 @@ public class UserController {
 
 
 
+    //@Valid : User 에 대해 유효성 검사를  하겠다는 표시
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
         
         // 주소값을 반환하는데 생성된 사용자의 상세 정보  주소 url 을 반환

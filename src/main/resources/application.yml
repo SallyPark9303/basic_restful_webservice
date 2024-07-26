@@ -4,4 +4,7 @@ server:
 spring:
   application:
   name: my-restful-service
+  message:
+    basename: messages
+
 
