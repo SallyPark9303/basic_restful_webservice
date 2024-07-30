@@ -4,6 +4,7 @@ package kr.co.consulting.myrestfulservice.Dao;
 import kr.co.consulting.myrestfulservice.bean.User;
 import org.springframework.stereotype.Component;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,9 +17,9 @@ public class UserDaoService {
     private static int usersCount = 3;
 
     static{
-        users.add(new User(1, "Kenneth", new Date()), new Data(),"test1","1111-11111");
-        users.add(new User(2, "Alice", new Date()), new Data(),"test2","2222-22222");
-        users.add(new User(3, "Elena", new Date()), new Data(),"test3","3333-33333");
+        users.add(new User(1, "Kenneth",  new Date(),"test1","1111-11111"));
+        users.add(new User(2, "Alice", new Date(),"test2","2222-22222"));
+        users.add(new User(3, "Elena", new Date(),"test3","3333-33333"));
 
     }
 
