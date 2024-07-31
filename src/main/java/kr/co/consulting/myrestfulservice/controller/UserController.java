@@ -59,17 +59,17 @@ public class UserController {
     })
     @GetMapping("/users/{id}")
     public EntityModel<User> retrieveUser2(
-            @Parameter(description = "사용자 ID", required = true, example = "1")
-            @PathVariable int id){
-        User user =  service.findOne(id);
-        if(user == null){
-            throw new UsernotFoundException(String.format("ID [%S] not found", id));
+        @Parameter(description = "사용자 ID", required = true, example = "1")
+        @PathVariable int id){
+            User user =  service.findOne(id);
+            if(user == null){
+                throw new UsernotFoundException(String.format("ID [%S] not found", id));
 
-        }
-        EntityModel entityModel = EntityModel.of(user);
+            }
+            EntityModel entityModel = EntityModel.of(user);
 
-        //헤테오스 링크작업
-        WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+            //헤테오스 링크작업
+            WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
         entityModel.add(linkTo.withRel("all-users")); // all-users -> http://localhost:8088/users
         return entityModel;
     }
