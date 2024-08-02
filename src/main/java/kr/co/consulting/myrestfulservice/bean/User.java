@@ -4,6 +4,10 @@ package kr.co.consulting.myrestfulservice.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -17,9 +21,13 @@ import java.util.Date;
 @NoArgsConstructor
 @JsonIgnoreProperties(value={"password","ssn"})
 @Schema(description = "사용자 상세 정보를 위한 도메인 객체")
+@Entity // 클래스의 이름으로서 테이블 생성
+@Table(name ="users")
 public class User {
 
     @Schema(title ="사용자 ID", description="사용자 ID는 자동 생성됩니다.")
+    @Id
+    @GeneratedValue
     private  Integer id;
     @Past(message= "등록일은 미래 날짤르 입력하실 수 없습니다.")
     private  String name;
